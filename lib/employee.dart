@@ -1,4 +1,7 @@
+import 'package:crud/service/database.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:random_string/random_string.dart';
 
 class Employee extends StatefulWidget {
   const Employee({super.key});
@@ -8,6 +11,9 @@ class Employee extends StatefulWidget {
 }
 
 class _EmployeeState extends State<Employee> {
+  TextEditingController nameController=TextEditingController();
+  TextEditingController ageController=TextEditingController();
+  TextEditingController locationController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +53,7 @@ class _EmployeeState extends State<Employee> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextField(
+                controller: nameController,
                 decoration: InputDecoration(
                   border: InputBorder.none
                 ),
@@ -65,6 +72,7 @@ class _EmployeeState extends State<Employee> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextField(
+                controller: ageController,
                 decoration: InputDecoration(
                     border: InputBorder.none
                 ),
@@ -83,6 +91,7 @@ class _EmployeeState extends State<Employee> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextField(
+                controller: locationController,
                 decoration: InputDecoration(
                     border: InputBorder.none
                 ),
@@ -90,7 +99,25 @@ class _EmployeeState extends State<Employee> {
             ),
             SizedBox(height: 20,),
             ElevatedButton(
-                onPressed: (){},
+                onPressed: () async{
+                  String Id=randomAlphaNumeric(10);
+                  Map<String,dynamic> employeeInfoMap={
+                    "Name":nameController.text.toString(),
+                    "Age":ageController.text.toString(),
+                    "Location":locationController.text.toString(),
+                    "id":Id,
+                  };
+                  await DataBaseMethod().addEmployeeDetails(employeeInfoMap, Id);
+                  Fluttertoast.showToast(
+                    msg: "data saved in the data base",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 3,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                },
                 child: Text("Save Data"))
           ],
         ),
