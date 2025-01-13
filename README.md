@@ -1,16 +1,26 @@
-# crud
+# Flutter CRUD Application
 
-A new Flutter project.
+A simple Flutter application demonstrating CRUD (Create, Read, Update, Delete) operations using Firebase Firestore.
+
+## Features
+
+- **Create**: Add new employee details to the Firestore database.
+- **Read**: Display a list of employees with their details from the Firestore database.
+- **Update**: Edit employee details and save the updated information back to Firestore.
+- **Delete**: Remove employee details from the Firestore database.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- [Flutter SDK](https://flutter.dev/docs/get-started/install)
+- [Firebase CLI](https://firebase.google.com/docs/cli)
+- A Firebase project set up with Firestore.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### 1. Clone the Repository
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+git clone https://github.com/your-repo/flutter-crud.git
+cd flutter-crud
